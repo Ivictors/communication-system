@@ -7,7 +7,7 @@ import com.victor.communication_system.dto.SmsRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TwilioSmsSenderService implements ISmsSender{
+public class TwilioSmsSenderService implements ISmsSender {
 
     private final TwilioConfiguration twilioConfiguration;
 
@@ -24,6 +24,6 @@ public class TwilioSmsSenderService implements ISmsSender{
                         new PhoneNumber(twilioConfiguration.getTrialNumber()),
                         from + smsRequest.getMessage()
                 )
-        .create();
+                .create();
     }
 }
