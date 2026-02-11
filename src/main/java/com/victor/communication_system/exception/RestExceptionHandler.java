@@ -23,4 +23,16 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(details, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(value = {Exception.class})
+    public ResponseEntity<ExceptionDetails> handlerException(Exception e) {
+        ExceptionDetails details = new ExceptionDetails(
+                "unexpected error. Try again later",
+                LocalDateTime.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                e.getClass().getName()
+        );
+
+        return new ResponseEntity<>(details, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
